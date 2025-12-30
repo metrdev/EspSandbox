@@ -1,8 +1,10 @@
 #include <Arduino.h>
 #include "TickTacker.h"
+#include "HcSr505.h"
+#include "IDigitalSensor.h"
 
-TickTacker tickTaker;
-const uint32_t TICK_MS_INTERVAL = 1000;
+const int MOTION_SENSOR_PIN = 12;
+IDigitalSensor *motionSensor;
 
 void setup()
 {
@@ -13,9 +15,13 @@ void setup()
   }
   Serial.println("Serial started at 115200");
 
-  tickTaker.start(TICK_MS_INTERVAL);
+  motionSensor = new HcSr505();
+  motionSensor->init(MOTION_SENSOR_PIN);
+  motionSensor->setCallback([](bool state)
+                      { Serial.println(state ? "Motion detected" : "No motion"); });
 }
 
 void loop()
 {
+  static_cast<HcSr505 *>(motionSensor)->service();
 }

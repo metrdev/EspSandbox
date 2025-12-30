@@ -13,7 +13,7 @@ void execute()
 TickTacker::TickTacker()
 {}
 
-void TickTacker::start(uint32_t interval_ms)
+void TickTacker::start(int interval_ms)
 {
-  ticker.attach_ms(interval_ms, ::execute);
+  _ticker.attach_ms(interval_ms, ::execute);
 }

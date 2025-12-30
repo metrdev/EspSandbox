@@ -1,14 +1,13 @@
 #pragma once
 
 #include <Ticker.h>
-#include <cstdint>
 
 class TickTacker {
 public:
   TickTacker();
 
-  void start(uint32_t interval_ms);
+  void start(int interval_ms);
 
 private:
-  Ticker ticker;
+  Ticker _ticker;
 };
