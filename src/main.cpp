@@ -3,7 +3,7 @@
 #include "HcSr505.h"
 #include "IDigitalSensor.h"
 
-const int MOTION_SENSOR_PIN = 12;
+const int MOTION_SENSOR_PIN = 14;
 IDigitalSensor *motionSensor;
 
 void setup()
